@@ -63,7 +63,7 @@ set(gcf,...
 hold on;
 
 % Call ode45 for simulation
-SimSet.x0       = zeros(2,1);                                               % Initial states£ºQ_B_Ah, U_P_V
+SimSet.x0       = zeros(2,1);                                               % Initial states: Q_B_Ah, U_P_V
 SimSet.tspan_s  = 0:2:3600;                                              	% Time span
 for ii = 1 : numel(I_B_A)
     SimSet.odeFunc = @(t, x)LIBECM.sim.cellWrapper(t,x,I_B_A(ii),LIBparam);	% Function handle for ECM simulation

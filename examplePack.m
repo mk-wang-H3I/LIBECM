@@ -21,10 +21,10 @@
 LIBparam            = LIBECM.cell.getLIB('NCR18650B');
 PACKparam.Np        = 4;
 PACKparam.R_Ohm_vec	= [0.03; 0.03; 0.03; 0.03];
-PACKparam.R_Ohm_inv	= LIBECM.pack.getRinv(Np, PACKparam.R_Ohm_vec);
+PACKparam.R_Ohm_inv	= LIBECM.pack.getRinv(PACKparam.Np, PACKparam.R_Ohm_vec);
 
 % ode45 simulation
-SimSet.x0       = zeros(2,1);                                            	% Initial states£ºQ_B_Ah, U_P_V
+SimSet.x0       = zeros(2,1);                                            	% Initial states: Q_B_Ah, U_P_V
 SimSet.tspan_s  = 0:2:3600;                                              	% Time span
 SimSet.odeFunc  = @(t, x)LIBECM.sim.packWrapper(t,x,LIBparam,PACKparam);	% Function handle for ECM simulation
 SimSet.Opt      = odeset('Events',@(t,x)LIBECM.sim.endEvent(t,x,LIBparam));	% Declare the terminal event
@@ -66,10 +66,10 @@ legend('Mean','Cell 1','Cell 2','Cell 3','Cell 4',...
 LIBparam            = LIBECM.cell.getLIB('NCR18650B');
 PACKparam.Np        = 4;
 PACKparam.R_Ohm_vec	= [0.03; 0.032; 0.028; 0.029];
-PACKparam.R_Ohm_inv	= LIBECM.pack.getRinv(Np, PACKparam.R_Ohm_vec);
+PACKparam.R_Ohm_inv	= LIBECM.pack.getRinv(PACKparam.Np, PACKparam.R_Ohm_vec);
 
 % ode45 simulation
-SimSet.x0       = zeros(2,1);                                            	% Initial states£ºQ_B_Ah, U_P_V
+SimSet.x0       = zeros(2,1);                                            	% Initial states: Q_B_Ah, U_P_V
 SimSet.tspan_s  = 0:2:3600;                                              	% Time span
 SimSet.odeFunc  = @(t, x)LIBECM.sim.packWrapper(t,x,LIBparam,PACKparam);	% Function handle for ECM simulation
 SimSet.Opt      = odeset('Events',@(t,x)LIBECM.sim.endEvent(t,x,LIBparam));	% Declare the terminal event
